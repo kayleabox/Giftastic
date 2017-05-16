@@ -30,6 +30,11 @@ input{
 img{
 }
 
+#box{
+	width:100px; 
+	height:100px;
+}
+
 #userInput{
 	margin-left: 20px;
 	display: inline-block;
@@ -46,6 +51,7 @@ img{
 }
 
 .item{
+	border-radius: 3px;
 	padding:10px;
 	display: inline-block;
 	margin:20px;

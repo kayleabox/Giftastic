@@ -1,6 +1,10 @@
 window.onload = function(){
 		var topics = ["lochness monster", "mermaid", "unicorn", "pegasus"];
 
+		var colors = ["#8000ff", "#ff0080", "#ff0000", "#ff8000", "#ffff00", "#80ff00", "#00ff00", "#00ff80", "#00ffff", "#0080ff", "#0000ff"];
+
+		var colorIndex = 0;
+
 		function renderButtons() {
 	        $("#buttons").empty();
 	        // YOUR CODE GOES HERE
@@ -45,7 +49,14 @@ window.onload = function(){
 
 					
 					for(i=0; i<results.length; i++){
-           				var gifDiv = $("<div class='item'>");
+						if(colorIndex<colors.length-1){
+           					colorIndex++;
+           				}
+           				else{
+           					colorIndex = 0;
+           				}
+
+           				var gifDiv = $('<div class="item" style ="background-color:'+colors[colorIndex]+'" >');
 
             			var rating = results[i].rating;
 
