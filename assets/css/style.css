@@ -24,16 +24,15 @@ input{
 	border-radius: 3px;
 	border:none;
 	height: 20px;
+	color:#8000ff;
+	background-color: black;
 }
 
 
 img{
+	height:80px;
 }
 
-#box{
-	width:100px; 
-	height:100px;
-}
 
 #userInput{
 	margin-left: 20px;
@@ -54,7 +53,8 @@ img{
 	border-radius: 3px;
 	padding:10px;
 	display: inline-block;
-	margin:20px;
+	margin-left: 30px;
+	margin-top:30px;
 }
 
 .rainbow {
