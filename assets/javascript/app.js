@@ -19,7 +19,7 @@ window.onload = function(){
         // YOUR CODE GOES HERE
         event.preventDefault();
         
-        var newTopic = $("#userTopic").val();
+        var newTopic = $("#userTopic").val().trim();
         if(newTopic){
           console.log(newTopic);
           topics.push(newTopic);
@@ -35,7 +35,7 @@ window.onload = function(){
       renderButtons();
 
 			$(document).on("click", ".giphButton", function(){
-				$("#displayGiphs").empty();
+				//$("#displayGiphs").empty();
 				var topic = $(this).attr('data-name');
 				console.log(topic);
 				var queryUrl = "http://api.giphy.com/v1/gifs/search?q=cute " +
@@ -56,6 +56,12 @@ window.onload = function(){
            					colorIndex = 0;
            				}
 
+           				var stillUrl = results[i].images.fixed_height_still.url;
+           				console.log(stillUrl);
+
+           				var animatedUrl = results[i].images.fixed_height.url;
+           				console.log(animatedUrl);
+
            				var gifDiv = $('<div class="item" style ="background-color:'+colors[colorIndex]+'" >');
 
             			var rating = results[i].rating;
@@ -63,7 +69,7 @@ window.onload = function(){
             			var p = $("<p>").text("Rating: " + rating);
 
 						gifDiv.prepend(p);
-						gifDiv.prepend('<img src="'+ results[i].images.fixed_height.url +'">');
+						gifDiv.prepend('<img class="giph" src="'+ stillUrl +'" data-still="'+stillUrl+'" data-animate="'+animatedUrl+'" data-state="still">');
 
 						$("#displayGiphs").prepend(gifDiv);
 					}
@@ -72,7 +78,22 @@ window.onload = function(){
 
 			})
 
+			$(document).on("click", ".giph", function(){
+				var status = $(this).attr("data-state");
+				console.log(status);
 
+				if(status === "still"){
+					var url = $(this).attr("data-animate");
+					$(this).attr("src", url);
+					$(this).attr("data-state", "animate");
+				}
+				else{
+					var url = $(this).attr("data-still");
+					$(this).attr("src", url);
+					$(this).attr("data-state", "still");
+				}
+
+			})
 
 
 
