@@ -38,7 +38,7 @@ window.onload = function(){
 				//$("#displayGiphs").empty();
 				var topic = $(this).attr('data-name');
 				console.log(topic);
-				var queryUrl = "http://api.giphy.com/v1/gifs/search?q=cute " +
+				var queryUrl = "https://api.giphy.com/v1/gifs/search?q=cute " +
         		topic + "&api_key=dc6zaTOxFJmzC&limit=6&rating=pg";
 				$.ajax({
 					url: queryUrl,
